@@ -1,6 +1,18 @@
 import fs from 'fs'
 import Link from 'next/link'
 import matter from 'gray-matter'
+import React from 'react'
+
+export type Post = {
+  frontMatter: {
+    [key: string]: any
+  }
+  slug: string
+}
+
+type Props = {
+  posts: Post[]
+}
 
 export const getStaticProps = () => {
   const files = fs.readdirSync('posts')
@@ -20,7 +32,7 @@ export const getStaticProps = () => {
   }
 }
 
-export default function Home({ posts }) {
+const Home: React.FC<Props> = ({ posts }) => {
   return (
     <div className='my-8'>
       {posts.map(post => (
@@ -33,3 +45,5 @@ export default function Home({ posts }) {
     </div>
   )
 }
+
+export default Home
