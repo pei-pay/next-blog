@@ -18,7 +18,7 @@ type Props = {
 export const getStaticProps = () => {
   const files = fs.readdirSync('posts')
   const posts = files.map(fileName => {
-    const slug = fileName.replace(/\.md$/, '') //追加
+    const slug = fileName.replace(/\.md$/, '')
     const fileContent = fs.readFileSync(`posts/${fileName}`, 'utf-8')
     const { data } = matter(fileContent)
     return {
@@ -26,9 +26,14 @@ export const getStaticProps = () => {
       slug
     }
   })
+
+  const sortedPosts = posts.sort((postA, postB) =>
+    new Date(postA.frontMatter.date) > new Date(postB.frontMatter.date) ? -1 : 1
+  )
+
   return {
     props: {
-      posts
+      posts: sortedPosts
     }
   }
 }
@@ -36,7 +41,7 @@ export const getStaticProps = () => {
 const Home: React.FC<Props> = ({ posts }) => {
   return (
     <div className='my-8'>
-      <div className='grid grid-cols-3'>
+      <div className='grid grid-cols-3 gap-4'>
         {posts.map(post => (
           <PostCard key={post.slug} post={post} />
         ))}
