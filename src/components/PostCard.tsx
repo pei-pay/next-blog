@@ -10,6 +10,7 @@ const PostCard: React.FC<Props> = ({ post }) => {
   return (
     <Link href={`/posts/${post.slug}`}>
       <div className='border rounded-lg'>
+        {/* FIXME: tailwindに邪魔されてwidthとheightが当たってない */}
         <Image
           src={`/${post.frontMatter.image}`}
           width={1200}

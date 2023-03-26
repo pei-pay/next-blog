@@ -6,6 +6,7 @@ import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
 
+// FIXME: 型
 export async function getStaticProps({ params }) {
   const file = fs.readFileSync(`posts/${params.slug}.md`, 'utf-8')
   const { data, content } = matter(file)
@@ -32,10 +33,11 @@ export async function getStaticPaths() {
   }
 }
 
+// FIXME: 型
 const Post = ({ frontMatter, content }) => {
   return (
     <div className='prose prose-lg max-w-none'>
-      <div className='border'>
+      <div>
         <Image
           src={`/${frontMatter.image}`}
           width={1200}
