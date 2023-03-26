@@ -2,6 +2,7 @@ import fs from 'fs'
 import Link from 'next/link'
 import matter from 'gray-matter'
 import React from 'react'
+import PostCard from '@/components/PostCard'
 
 export type Post = {
   frontMatter: {
@@ -35,13 +36,11 @@ export const getStaticProps = () => {
 const Home: React.FC<Props> = ({ posts }) => {
   return (
     <div className='my-8'>
-      {posts.map(post => (
-        <div key={post.slug}>
-          <Link href={`/post/${post.slug}`}>
-            <span>{post.frontMatter.title}</span>
-          </Link>
-        </div>
-      ))}
+      <div className='grid grid-cols-3'>
+        {posts.map(post => (
+          <PostCard key={post.slug} post={post} />
+        ))}
+      </div>
     </div>
   )
 }
