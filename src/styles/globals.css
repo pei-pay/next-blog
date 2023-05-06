@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* NOTE: tailwindのheight: autoに邪魔されてスタイルが当たらないので、ここで指定 */
+img.post-card-image {
+  height: 200px;
+}
+img.thumbnail-image {
+  height: 700px;
+}

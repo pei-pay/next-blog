@@ -10,12 +10,12 @@ const PostCard: React.FC<Props> = ({ post }) => {
   return (
     <Link href={`/posts/${post.slug}`}>
       <div className='border rounded-lg'>
-        {/* FIXME: tailwindに邪魔されてwidthとheightが当たってない */}
         <Image
           src={`/${post.frontMatter.image}`}
-          width={1200}
-          height={700}
+          width={300}
+          height={200}
           alt={post.frontMatter.title}
+          className='post-card-image'
         />
       </div>
       <div className='px-2 py-4'>

@@ -43,6 +43,7 @@ const Post = ({ frontMatter, content }) => {
           width={1200}
           height={700}
           alt={frontMatter.title}
+          className='thumbnail-image'
         />
       </div>
       <h1 className='mt-12'>{frontMatter.title}</h1>
